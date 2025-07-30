@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,6 +11,11 @@ import Footer from './components/Footer';
 import ParallaxBackground from './components/ParallaxBackground';
 import './styles.css';
 
+const sectionVariants = {
+  hidden: { opacity: 0.8 },
+  visible: { opacity: 1, transition: { duration: 1, ease: "easeInOut" } }
+};
+
 export default function App() {
   return (
     <div className="main-container">
@@ -17,17 +23,25 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
-        <div className="hero-to-about-transition"></div>
+        <motion.div
+          className="hero-to-about-transition"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        ></motion.div>
         <About id="about" />
-        <div className="about-to-mission-transition"></div>
         <Mission id="mission" />
-        <div className="mission-to-partners-transition"></div>
         <Partners id="partners" />
-        <div className="partners-to-works-transition"></div>
         <HowItWorks id="how-it-works" />
-        <div className="works-to-contact-transition"></div>
         <Contact id="contact" />
-        <div className="contact-to-footer-transition"></div>
+        <motion.div
+          className="contact-to-footer-transition"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        ></motion.div>
       </main>
       <Footer />
     </div>

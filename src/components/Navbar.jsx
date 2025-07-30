@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [currentSection, setCurrentSection] = useState('hero');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +44,11 @@ export default function Navbar() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMobileMenuOpen(false); // Close mobile menu after navigation
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   return (
@@ -60,7 +66,8 @@ export default function Navbar() {
           <span className="brand-text">Mirai Collective</span>
         </div>
         
-        <div className="navbar-links">
+        {/* Desktop Navigation */}
+        <div className="navbar-links desktop-nav">
           <button onClick={() => scrollToSection('about')} className="nav-link">
             About Us
           </button>
@@ -77,7 +84,58 @@ export default function Navbar() {
             Contact Us
           </button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button 
+          className="mobile-menu-button" 
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <motion.div
+            animate={isMobileMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+            className="hamburger-line"
+          />
+          <motion.div
+            animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+            className="hamburger-line"
+          />
+          <motion.div
+            animate={isMobileMenuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+            className="hamburger-line"
+          />
+        </button>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="mobile-nav-menu"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="mobile-nav-links">
+              <button onClick={() => scrollToSection('about')} className="mobile-nav-link">
+                About Us
+              </button>
+              <button onClick={() => scrollToSection('mission')} className="mobile-nav-link">
+                Our Mission
+              </button>
+              <button onClick={() => scrollToSection('partners')} className="mobile-nav-link">
+                Partners
+              </button>
+              <button onClick={() => scrollToSection('how-it-works')} className="mobile-nav-link">
+                How It Works
+              </button>
+              <button onClick={() => scrollToSection('contact')} className="mobile-nav-link">
+                Contact Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

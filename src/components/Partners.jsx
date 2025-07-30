@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Award, Shield, Users2, CheckCircle } from 'lucide-react';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { opacity: 0.8 },
+  visible: { opacity: 1, transition: { duration: 1, ease: "easeInOut" } }
 };
 
 const partnerVariants = {
@@ -24,23 +24,13 @@ export default function Partners({ id }) {
   const partnerships = [
     { 
       icon: <Award size={24} />, 
-      title: "Non-Profit Organizations",
-      description: "International NGOs focused on social impact and global change"
+      title: "WAFAA",
+      description: "The Women and Families Ascending Association provides all individuals and families with social programs that vary from hotlines, career developments courses, and therapy to name a few."
     },
     { 
       icon: <Shield size={24} />, 
-      title: "Government Relations",
-      description: "Strategic partnerships with Japanese ministries and agencies"
-    },
-    { 
-      icon: <Users2 size={24} />, 
-      title: "Corporate Alliances",
-      description: "Collaborations with leading Japanese corporations and foundations"
-    },
-    { 
-      icon: <CheckCircle size={24} />, 
-      title: "Academic Institutions",
-      description: "Research partnerships with top universities and think tanks"
+      title: "Reach for Uganda",
+      description: "Reach for Uganda is an organization that partners with communities in rural eastern uganda to enhance quality of life and individual potential through sustainable education, healthcare, and community development initiatives."
     }
   ];
 

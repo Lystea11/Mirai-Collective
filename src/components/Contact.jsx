@@ -11,10 +11,10 @@ export default function Contact({ id }) {
   return (
     <motion.section 
       id={id}
-      initial={{ opacity: 0 }}
+      initial={{ opacity: 0.8 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
     >
       <h2>Connect With Us</h2>
       <p style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--subtle-gray)' }}>

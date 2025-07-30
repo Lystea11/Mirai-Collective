@@ -3,14 +3,13 @@ import { motion } from 'framer-motion';
 import { Search, Handshake, TrendingUp } from 'lucide-react';
 
 const stepVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0.8 },
   visible: (i) => ({
     opacity: 1,
-    y: 0,
     transition: {
       delay: i * 0.2,
-      duration: 0.6,
-      ease: 'easeOut',
+      duration: 1,
+      ease: "easeInOut",
     },
   }),
 };

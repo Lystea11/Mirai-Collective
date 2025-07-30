@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { Globe, Users, Target } from 'lucide-react';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { opacity: 0.8 },
+  visible: { opacity: 1, transition: { duration: 1, ease: "easeInOut" } }
 };
 
 const featureVariants = {

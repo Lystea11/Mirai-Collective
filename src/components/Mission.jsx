@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { opacity: 0.8 },
+  visible: { opacity: 1, transition: { duration: 1, ease: "easeInOut" } }
 };
 
 export default function Mission({ id }) {
