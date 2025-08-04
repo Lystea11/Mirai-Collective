@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Shield, Users2, CheckCircle } from 'lucide-react';
+import ClickableTitle from './ClickableTitle';
 
 const sectionVariants = {
   hidden: { opacity: 0.8 },
@@ -43,7 +44,9 @@ export default function Partners({ id }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <h2>Strategic Partnerships</h2>
+      <ClickableTitle to="/partners">
+        <h2>Strategic Partnerships</h2>
+      </ClickableTitle>
       
       <motion.div 
         className="partners-grid"

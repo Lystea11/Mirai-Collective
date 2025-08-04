@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Users, Target } from 'lucide-react';
+import ClickableTitle from './ClickableTitle';
 
 const sectionVariants = {
   hidden: { opacity: 0.8 },
@@ -24,7 +25,7 @@ export default function About({ id }) {
   const features = [
     { icon: <Globe size={24} />, text: "Global perspective with local expertise" },
     { icon: <Users size={24} />, text: "Dedicated partnership approach" },
-    { icon: <Target size={24} />, text: "Strategic market entry solutions" }
+    { icon: <Target size={24} />, text: "International Audience Engagement" }
   ];
 
   return (
@@ -36,9 +37,11 @@ export default function About({ id }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <h2>About Mirai Collective</h2>
+      <ClickableTitle to="/about">
+        <h2>About Mirai Collective</h2>
+      </ClickableTitle>
       <p>
-        As Japan's premier consultancy for international non-profits, we specialize in bridging the gap between global organizations and the Japanese market. With deep cultural understanding and extensive local networks, we transform complex market entry challenges into strategic opportunities for social impact.
+        Mirai Collective is a student-led platform based in Japan that partners with international nonprofits to bring their missions to life through youth-led action. By connecting global organizations with passionate student leaders, we make social impact accessible, localized, and community-driven—empowering the next generation to champion global change from Japan.
       </p>
       
       <motion.div 

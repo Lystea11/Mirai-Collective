@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,14 +40,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false); // Close mobile menu after navigation
-  };
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -59,30 +52,30 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="navbar-container">
-        <div className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <div className="brand-logo">
             <span className="logo-m">M</span>
           </div>
           <span className="brand-text">Mirai Collective</span>
-        </div>
+        </Link>
         
         {/* Desktop Navigation */}
         <div className="navbar-links desktop-nav">
-          <button onClick={() => scrollToSection('about')} className="nav-link">
+          <Link to="/about" className="nav-link">
             About Us
-          </button>
-          <button onClick={() => scrollToSection('mission')} className="nav-link">
+          </Link>
+          <Link to="/mission" className="nav-link">
             Our Mission
-          </button>
-          <button onClick={() => scrollToSection('partners')} className="nav-link">
+          </Link>
+          <Link to="/partners" className="nav-link">
             Partners
-          </button>
-          <button onClick={() => scrollToSection('how-it-works')} className="nav-link">
+          </Link>
+          <Link to="/how-it-works" className="nav-link">
             How It Works
-          </button>
-          <button onClick={() => scrollToSection('contact')} className="nav-link">
+          </Link>
+          <Link to="/contact" className="nav-link">
             Contact Us
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -117,21 +110,21 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <div className="mobile-nav-links">
-              <button onClick={() => scrollToSection('about')} className="mobile-nav-link">
+              <Link to="/about" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 About Us
-              </button>
-              <button onClick={() => scrollToSection('mission')} className="mobile-nav-link">
+              </Link>
+              <Link to="/mission" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 Our Mission
-              </button>
-              <button onClick={() => scrollToSection('partners')} className="mobile-nav-link">
+              </Link>
+              <Link to="/partners" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 Partners
-              </button>
-              <button onClick={() => scrollToSection('how-it-works')} className="mobile-nav-link">
+              </Link>
+              <Link to="/how-it-works" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 How It Works
-              </button>
-              <button onClick={() => scrollToSection('contact')} className="mobile-nav-link">
+              </Link>
+              <Link to="/contact" className="mobile-nav-link" onClick={toggleMobileMenu}>
                 Contact Us
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

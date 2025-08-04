@@ -1,22 +1,23 @@
 import React from 'react';
 import { X, Linkedin, Facebook } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-links">
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#terms">Terms & Conditions</a>
-        <a href="#contact">Contact</a>
+        <Link to="/privacy">Privacy Policy</Link>
+        <Link to="/terms">Terms & Conditions</Link>
+        <Link to="/contact">Contact</Link>
       </div>
       <div className="social-icons">
-        <a href="#twitter" aria-label="Twitter">
+        <a href="#" aria-label="Twitter">
           <X size={20} />
         </a>
-        <a href="#linkedin" aria-label="LinkedIn">
+        <a href="#" aria-label="LinkedIn">
           <Linkedin size={20} />
         </a>
-        <a href="#facebook" aria-label="Facebook">
+        <a href="#" aria-label="Facebook">
           <Facebook size={20} />
         </a>
       </div>

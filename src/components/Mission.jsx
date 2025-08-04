@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ClickableTitle from './ClickableTitle';
 
 const sectionVariants = {
   hidden: { opacity: 0.8 },
@@ -16,7 +17,9 @@ export default function Mission({ id }) {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <h2>Our Mission</h2>
+      <ClickableTitle to="/mission">
+        <h2>Our Mission</h2>
+      </ClickableTitle>
       <div className="mission-content">
         <p className="mission-statement">
           Mirai Collective (未来, "future") exists to forge powerful connections. We believe that the world's most pressing challenges require global collaboration. Our mission is to act as the dedicated bridge for international non-profits, providing the strategic guidance, cultural insight, and operational support necessary to successfully establish and scale their vital work within Japan.

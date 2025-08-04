@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
 
-const words = ["Global Impact", "Social Innovation", "Shared Purpose"];
+const words = ["Global Impact", "Social\u00A0Innovation", "Shared Purpose"];
 
 export default function Hero() {
   const [currentWord, setCurrentWord] = useState(words[0]);
@@ -61,10 +61,10 @@ export default function Hero() {
                   scale: 1.1
                 }}
                 transition={{ 
-                  duration: 0.6, 
+                  duration: 0.3, 
                   ease: "easeInOut",
-                  opacity: { duration: 0.4 },
-                  filter: { duration: 0.3 }
+                  opacity: { duration: 0.2 },
+                  filter: { duration: 0.15 }
                 }}
                 className="hero-title-word"
               >

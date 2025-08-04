@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import ClickableTitle from './ClickableTitle';
 
 export default function Contact({ id }) {
   const handleSubmit = (e) => {
@@ -16,7 +17,9 @@ export default function Contact({ id }) {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      <h2>Connect With Us</h2>
+      <ClickableTitle to="/contact">
+        <h2>Connect With Us</h2>
+      </ClickableTitle>
       <p style={{ textAlign: 'center', marginBottom: '2rem', color: 'var(--subtle-gray)' }}>
         Ready to bring your vision to Japan? Let's discuss how we can build the future together.
       </p>
