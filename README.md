@@ -1,5 +1,5 @@
-# Firebase Studio
+# MiraiConnect
 
-This is a NextJS starter in Firebase Studio.
+A portfolio website for Mirai Collective, a student-led nonprofit consultancy connecting international nonprofits with Japanese communities.
 
-To get started, take a look at src/app/page.tsx.
+This is a Next.js project bootstrapped with `create-next-app` and configured with Firebase Studio.
