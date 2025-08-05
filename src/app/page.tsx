@@ -1,3 +1,5 @@
+"use client";
+
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +12,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import * as React from 'react';
 
 const partners = [
   {
@@ -45,6 +49,10 @@ const partners = [
 ];
 
 export default function Home() {
+    const plugin = React.useRef(
+        Autoplay({ delay: 2000, stopOnInteraction: true })
+    );
+
   return (
     <div className="flex flex-col">
       <HeroSection />
@@ -125,14 +133,17 @@ export default function Home() {
           </div>
           <div className="mt-12 w-full overflow-hidden">
             <Carousel
+              plugins={[plugin.current]}
               className="w-full"
               opts={{
                 align: 'start',
                 loop: true,
               }}
+              onMouseEnter={() => plugin.current.stop()}
+              onMouseLeave={() => plugin.current.reset()}
             >
               <CarouselContent className="-ml-1">
-                {partners.map((partner, index) => (
+                {partners.concat(partners).map((partner, index) => (
                   <CarouselItem
                     key={index}
                     className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/5"
