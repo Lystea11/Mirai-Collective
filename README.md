@@ -1,4 +1,4 @@
-# MiraiConnect
+# Mirai Collective
 
 A portfolio website for Mirai Collective, a student-led nonprofit consultancy connecting international nonprofits with Japanese communities.
 

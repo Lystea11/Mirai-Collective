@@ -6,7 +6,7 @@ import { Footer } from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'MiraiConnect - Bridging Global Impact to Japan',
+  title: 'Mirai Collective - Bridging Global Impact to Japan',
   description:
     'Mirai Collective is a student-led nonprofit consultancy bridging international nonprofits with Japanese communities through cultural integration, fundraising, and community building.',
 };

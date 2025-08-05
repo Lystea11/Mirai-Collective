@@ -1,5 +1,6 @@
-import { Heart, Mountain } from "lucide-react";
+import { Heart } from "lucide-react";
 import Link from "next/link";
+import { Logo } from "../icons/logo";
 
 export function Footer() {
   return (
@@ -7,9 +8,9 @@ export function Footer() {
       <div className="container mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
           <Link href="/" className="flex items-center gap-2">
-            <Mountain className="h-6 w-6 text-primary" />
+            <Logo className="h-6 w-6 text-primary" />
             <span className="font-headline text-lg font-bold">
-              MiraiConnect
+              Mirai Collective
             </span>
           </Link>
           <p className="flex items-center text-sm text-muted-foreground">

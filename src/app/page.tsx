@@ -5,7 +5,44 @@ import { HeroSection } from '@/components/home/hero-section';
 import { AnimatedSection } from '@/components/shared/animated-section';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
+
+const partners = [
+  {
+    name: 'WAFAA',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'WAFAA Logo',
+  },
+  {
+    name: 'Reach for Uganda',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'Reach for Uganda Logo',
+  },
+  {
+    name: 'Partner 3',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'Partner Logo 3',
+  },
+  {
+    name: 'Partner 4',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'Partner Logo 4',
+  },
+  {
+    name: 'Partner 5',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'Partner Logo 5',
+  },
+  {
+    name: 'Partner 6',
+    logo: 'https://placehold.co/200x100.png',
+    alt: 'Partner Logo 6',
+  },
+];
 
 export default function Home() {
   return (
@@ -78,36 +115,54 @@ export default function Home() {
       </AnimatedSection>
       </div>
 
-      <AnimatedSection className="container mx-auto px-4 py-16 sm:py-24">
-        <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Trusted Partners</h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            We are proud to collaborate with organizations making a real difference in the world.
-          </p>
+      <AnimatedSection className="w-full py-16 sm:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Trusted Partners</h2>
+            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+              We are proud to collaborate with organizations making a real difference in the world.
+            </p>
+          </div>
+          <div className="mt-12 w-full overflow-hidden">
+            <Carousel
+              className="w-full"
+              opts={{
+                align: 'start',
+                loop: true,
+              }}
+            >
+              <CarouselContent className="-ml-1">
+                {partners.map((partner, index) => (
+                  <CarouselItem
+                    key={index}
+                    className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/5"
+                  >
+                    <div className="p-1">
+                      <div className="flex aspect-video items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-300">
+                        <Image
+                          src={partner.logo}
+                          alt={partner.alt}
+                          data-ai-hint="logo"
+                          width={200}
+                          height={100}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
+          <div className="text-center mt-8">
+              <Button asChild size="lg" variant="outline">
+                <Link href="/partners">
+                  Become a Partner
+                </Link>
+              </Button>
+          </div>
         </div>
-        <div className="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-4">
-            <div className="flex justify-center items-center">
-                <Image src="https://placehold.co/200x100.png" alt="WAFAA Logo" data-ai-hint="logo" width={200} height={100} className="opacity-60 hover:opacity-100 transition-opacity"/>
-            </div>
-            <div className="flex justify-center items-center">
-                 <Image src="https://placehold.co/200x100.png" alt="Reach for Uganda Logo" data-ai-hint="logo" width={200} height={100} className="opacity-60 hover:opacity-100 transition-opacity"/>
-            </div>
-            <div className="flex justify-center items-center">
-                 <Image src="https://placehold.co/200x100.png" alt="Partner Logo 3" data-ai-hint="logo" width={200} height={100} className="opacity-60 hover:opacity-100 transition-opacity"/>
-            </div>
-            <div className="flex justify-center items-center">
-                 <Image src="https://placehold.co/200x100.png" alt="Partner Logo 4" data-ai-hint="logo" width={200} height={100} className="opacity-60 hover:opacity-100 transition-opacity"/>
-            </div>
-        </div>
-         <div className="text-center mt-8">
-             <Button asChild size="lg" variant="outline">
-              <Link href="/partners">
-                Become a Partner
-              </Link>
-            </Button>
-         </div>
       </AnimatedSection>
-
     </div>
   );
 }

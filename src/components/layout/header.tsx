@@ -1,12 +1,13 @@
 "use client";
 
-import { Menu, Mountain } from "lucide-react";
+import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { Logo } from "../icons/logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -40,8 +41,8 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Mountain className="h-6 w-6 text-primary" />
-          <span className="font-headline text-xl font-bold">MiraiConnect</span>
+          <Logo className="h-6 w-6 text-primary" />
+          <span className="font-headline text-xl font-bold">Mirai Collective</span>
         </Link>
         <nav className="hidden md:flex md:gap-6">
           {navLinks.map(({ href, label }) => (
@@ -71,8 +72,8 @@ export function Header() {
             <SheetContent side="right">
                 <div className="flex flex-col gap-6 p-6">
                     <Link href="/" className="flex items-center gap-2">
-                        <Mountain className="h-6 w-6 text-primary" />
-                        <span className="font-headline text-xl font-bold">MiraiConnect</span>
+                        <Logo className="h-6 w-6 text-primary" />
+                        <span className="font-headline text-xl font-bold">Mirai Collective</span>
                     </Link>
                     <nav className="flex flex-col gap-4">
                         {navLinks.map(({ href, label }) => (
