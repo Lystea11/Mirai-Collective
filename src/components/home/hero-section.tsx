@@ -29,7 +29,7 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative h-[60vh] min-h-[400px] w-full bg-primary/10 flex items-center justify-center text-center overflow-hidden">
+    <section className="relative h-[80vh] min-h-[600px] w-full bg-primary/10 flex items-center justify-center text-center overflow-hidden">
         {/* Parallax-like background effect */}
         <div 
             className="absolute inset-0 bg-cover bg-fixed bg-center" 
@@ -38,7 +38,7 @@ export function HeroSection() {
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
         <div className="container relative z-10 px-4">
-        <h1 className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="font-headline text-6xl font-extrabold tracking-tighter text-foreground sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]">
           Bridge{" "}
           <span
             className={cn(
@@ -51,16 +51,16 @@ export function HeroSection() {
           <br />
           to Japan
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground md:text-xl">
+        <p className="mx-auto mt-8 max-w-3xl text-xl text-muted-foreground md:text-2xl lg:text-3xl">
           We empower international nonprofits to build meaningful connections and create lasting change within Japanese communities.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Button asChild size="lg">
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
+          <Button asChild size="lg" className="text-lg px-8 py-4 h-auto">
             <Link href="/contact">
-              Partner With Us <ArrowRight className="ml-2 h-5 w-5" />
+              Partner With Us <ArrowRight className="ml-2 h-6 w-6" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
+          <Button asChild size="lg" variant="outline" className="text-lg px-8 py-4 h-auto">
             <Link href="/about">Learn More</Link>
           </Button>
         </div>
