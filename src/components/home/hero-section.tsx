@@ -38,7 +38,7 @@ export function HeroSection() {
         ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
         <div className="container relative z-10 px-4">
-        <h1 className="font-headline text-6xl font-extrabold tracking-tighter text-foreground sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem]">
+        <h1 className="font-headline text-4xl font-extrabold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
           Bridge{" "}
           <span
             className={cn(

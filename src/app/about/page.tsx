@@ -5,9 +5,9 @@ import { Eye, Globe, Handshake, Heart, Leaf, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
 
 const teamMembers = [
-    { name: 'Yuki Tanaka', role: 'Co-Founder & CEO', image: 'https://placehold.co/100x100.png', initials: 'YT' },
-    { name: 'Alex Chen', role: 'Co-Founder & COO', image: 'https://placehold.co/100x100.png', initials: 'AC' },
-    { name: 'Maria Garcia', role: 'Communications Officer', image: 'https://placehold.co/100x100.png', initials: 'MG' },
+    { name: 'Jackson Bomoncgag', role: 'Co-Founder & CEO', image: 'https://placehold.co/100x100.png', initials: 'JB' },
+    { name: 'Lysandre Stone-Bourgeois', role: 'Co-Founder & COO', image: 'https://placehold.co/100x100.png', initials: 'LSB' },
+    { name: 'Joshua Neely', role: 'Communications Officer', image: 'https://placehold.co/100x100.png', initials: 'JN' },
 ]
 
 const differentiators = [
