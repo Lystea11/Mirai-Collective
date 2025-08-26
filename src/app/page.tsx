@@ -46,6 +46,26 @@ const partners = [
     logo: '/logos/6.png',
     alt: 'Sustainable Cambodia Logo',
   },
+    {
+    name: 'Africa Classroom Connection',
+    logo: '/logos/7.jpeg',
+    alt: 'Africa Classroom Connection Logo',
+  },
+{
+    name: 'Africa Cries Out',
+    logo: '/logos/8.jpeg',
+    alt: 'Africa Cries Out Logo',
+  },
+    {
+    name: 'Self Help Africa',
+    logo: '/logos/9.png',
+    alt: 'Self Help Africa Logo',
+  },
+      {
+    name: 'Clean Water for Haiti',
+    logo: '/logos/10.png',
+    alt: 'Clean Water for Haiti Logo',
+  },
 ];
 
 export default function Home() {

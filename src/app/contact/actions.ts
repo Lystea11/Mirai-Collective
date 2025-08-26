@@ -1,6 +1,12 @@
 "use server";
 
 import * as z from "zod";
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const formSchema = z.object({
   name: z.string(),
@@ -13,14 +19,28 @@ export async function submitInquiry(values: z.infer<typeof formSchema>) {
   try {
     const validatedData = formSchema.parse(values);
 
-    // In a real application, you would process this data:
-    // - Save to a database
-    // - Send an email notification
-    // - etc.
-    console.log("Received inquiry:", validatedData);
+    // Save to Supabase database
+    const { data, error } = await supabase
+      .from('contact_inquiries')
+      .insert([
+        {
+          name: validatedData.name,
+          email: validatedData.email,
+          category: validatedData.category,
+          message: validatedData.message,
+        }
+      ])
+      .select();
 
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    if (error) {
+      console.error("Database error:", error);
+      return {
+        success: false,
+        message: "There was an error submitting your inquiry. Please try again.",
+      };
+    }
+
+    console.log("Inquiry saved:", data);
 
     return {
       success: true,

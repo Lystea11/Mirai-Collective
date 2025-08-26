@@ -1,16 +1,16 @@
 import { AnimatedSection } from '@/components/shared/animated-section';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Eye, Globe, Handshake, Heart, Leaf, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
 
 const teamMembers = [
-    { name: 'Jackson Bomoncgag', role: 'Co-Founder & CEO', image: 'https://placehold.co/100x100.png', initials: 'JB' },
-    { name: 'Lysandre Stone-Bourgeois', role: 'Co-Founder & COO', image: 'https://placehold.co/100x100.png', initials: 'LSB' },
-    { name: 'Joshua Neely', role: 'Communications Officer', image: 'https://placehold.co/100x100.png', initials: 'JN' },
-    {name: 'Akira Kanematsu', role: 'Chief Financial Officier', image: 'https://placehold.co/100x100.png', initials: 'AK'},
-    { name: 'Ray Takizawa', role: 'Business Analyst', image: 'https://placehold.co/100x100.png', initials: 'RT'},
-    {name: 'Lincoln Nguyen-Moreira', role: 'Chief Information Officer', image: 'https://placehold.co/100x100.png', initials: 'RT'}
+    { name: 'Jackson Bomoncgag', role: 'Co-Founder & CEO', initials: 'JB' },
+    { name: 'Lysandre Stone-Bourgeois', role: 'Co-Founder & COO', initials: 'LSB' },
+    { name: 'Akira Kanematsu', role: 'Chief Financial Officer', initials: 'AK'},
+    { name: 'Lincoln Nguyen-Moreira', role: 'Chief Information Officer', initials: 'LNM'},
+    { name: 'Joshua Neely', role: 'Communications Officer', initials: 'JN' },
+    { name: 'Ray Takizawa', role: 'Business Analyst', initials: 'RT'}
 ]
 
 const differentiators = [
@@ -64,16 +64,31 @@ export default function AboutPage() {
                     <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">
                         We are a diverse group of students united by a common goal: to facilitate global good.
                     </p>
-                    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                        {teamMembers.map(member => (
-                             <Card key={member.name} className="text-center">
-                                 <CardContent className="pt-6">
-                                     <Avatar className="w-24 h-24 mx-auto mb-4">
-                                         <AvatarImage src={member.image} alt={member.name} data-ai-hint="portrait person" />
-                                         <AvatarFallback>{member.initials}</AvatarFallback>
+                    {/* CEO and COO - Leadership Row */}
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        {teamMembers.slice(0, 2).map(member => (
+                             <Card key={member.name} className="text-center border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/40 hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer group">
+                                 <CardContent className="pt-8 pb-8">
+                                     <Avatar className="w-32 h-32 mx-auto mb-6 transition-transform duration-300 ease-out group-hover:scale-110">
+                                         <AvatarFallback className="text-2xl font-bold bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">{member.initials}</AvatarFallback>
                                      </Avatar>
-                                     <h3 className="text-xl font-bold font-headline">{member.name}</h3>
-                                     <p className="text-primary">{member.role}</p>
+                                     <h3 className="text-2xl font-bold font-headline mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                                     <p className="text-primary text-lg font-semibold">{member.role}</p>
+                                 </CardContent>
+                             </Card>
+                        ))}
+                    </div>
+                    
+                    {/* Other Team Members */}
+                    <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                        {teamMembers.slice(2).map(member => (
+                             <Card key={member.name} className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer group">
+                                 <CardContent className="pt-6">
+                                     <Avatar className="w-20 h-20 mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-105">
+                                         <AvatarFallback className="text-lg group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">{member.initials}</AvatarFallback>
+                                     </Avatar>
+                                     <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors duration-300">{member.name}</h3>
+                                     <p className="text-primary text-sm">{member.role}</p>
                                  </CardContent>
                              </Card>
                         ))}
