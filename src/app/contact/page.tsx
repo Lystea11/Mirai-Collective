@@ -23,7 +23,11 @@ export default function ContactPage() {
                              <div className="mt-8 space-y-4">
                                 <div className="flex items-center gap-4">
                                     <Mail className="h-6 w-6 text-primary" />
-                                    <a href="mailto:hello@miraiconnect.org" className="text-muted-foreground hover:text-primary transition-colors">hello@miraiconnect.org</a>
+                                    <a href="mailto:lysandrestonebourgeois@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">lysandrestonebourgeois@gmail.com</a>
+                                </div>
+                                                                <div className="flex items-center gap-4">
+                                    <Mail className="h-6 w-6 text-primary" />
+                                    <a href="mailto:jackbomongcag@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">jackbomongcag@gmail.com</a>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <Phone className="h-6 w-6 text-primary" />

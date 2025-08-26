@@ -51,7 +51,7 @@ export default function MissionPage() {
                         </div>
                         <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl">
                             <Image 
-                                src="https://placehold.co/600x400.png"
+                                src="/3.png"
                                 alt="Bridge connecting two lands"
                                 data-ai-hint="bridge connection"
                                 width={600}

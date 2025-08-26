@@ -18,33 +18,33 @@ import * as React from 'react';
 const partners = [
   {
     name: 'WAFAA',
-    logo: 'https://placehold.co/200x100.png',
+    logo: '/logos/1.jpeg',
     alt: 'WAFAA Logo',
   },
   {
     name: 'Reach for Uganda',
-    logo: 'https://placehold.co/200x100.png',
+    logo: '/logos/2.png',
     alt: 'Reach for Uganda Logo',
   },
   {
-    name: 'Partner 3',
-    logo: 'https://placehold.co/200x100.png',
-    alt: 'Partner Logo 3',
+    name: 'Womens Global Education Project',
+    logo: '/logos/3.png',
+    alt: 'Womens Global Education Project Logo',
   },
   {
-    name: 'Partner 4',
-    logo: 'https://placehold.co/200x100.png',
-    alt: 'Partner Logo 4',
+    name: 'Give to Columbia',
+    logo: '/logos/4.png',
+    alt: 'Give to Columbia Logo',
   },
   {
-    name: 'Partner 5',
-    logo: 'https://placehold.co/200x100.png',
-    alt: 'Partner Logo 5',
+    name: 'Bridges to Learning',
+    logo: '/logos/5.png',
+    alt: 'Bridges to Learning Logo',
   },
   {
-    name: 'Partner 6',
-    logo: 'https://placehold.co/200x100.png',
-    alt: 'Partner Logo 6',
+    name: 'Sustainable Cambodia',
+    logo: '/logos/6.png',
+    alt: 'Sustainable Cambodia Logo',
   },
 ];
 
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
           <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl">
              <Image
-              src="https://placehold.co/600x400.png"
+              src="/1.jpg"
               alt="Team working together"
               data-ai-hint="collaboration meeting"
               width={600}

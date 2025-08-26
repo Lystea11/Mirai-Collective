@@ -8,6 +8,9 @@ const teamMembers = [
     { name: 'Jackson Bomoncgag', role: 'Co-Founder & CEO', image: 'https://placehold.co/100x100.png', initials: 'JB' },
     { name: 'Lysandre Stone-Bourgeois', role: 'Co-Founder & COO', image: 'https://placehold.co/100x100.png', initials: 'LSB' },
     { name: 'Joshua Neely', role: 'Communications Officer', image: 'https://placehold.co/100x100.png', initials: 'JN' },
+    {name: 'Akira Kanematsu', role: 'Chief Financial Officier', image: 'https://placehold.co/100x100.png', initials: 'AK'},
+    { name: 'Ray Takizawa', role: 'Business Analyst', image: 'https://placehold.co/100x100.png', initials: 'RT'},
+    {name: 'Lincoln Nguyen-Moreira', role: 'Chief Information Officer', image: 'https://placehold.co/100x100.png', initials: 'RT'}
 ]
 
 const differentiators = [
@@ -43,7 +46,7 @@ export default function AboutPage() {
                         </div>
                         <div className="order-1 md:order-2 h-80 w-full overflow-hidden rounded-lg shadow-xl">
                              <Image 
-                                src="https://placehold.co/600x400.png"
+                                src="/2.jpg"
                                 alt="Founders planning"
                                 data-ai-hint="students planning"
                                 width={600}
