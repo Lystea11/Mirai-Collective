@@ -41,7 +41,7 @@ export function Header() {
     >
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2">
-          <Logo className="h-8 w-8 text-primary" />
+          <Logo className="h-6 w-6" />
           <span className="font-headline text-2xl font-bold">Mirai Collective</span>
         </Link>
         <nav className="hidden md:flex md:gap-6">
@@ -72,7 +72,7 @@ export function Header() {
             <SheetContent side="right">
                 <div className="flex flex-col gap-6 p-6">
                     <Link href="/" className="flex items-center gap-2">
-                        <Logo className="h-8 w-8 text-primary" />
+                        <Logo className="h-6 w-6" />
                         <span className="font-headline text-2xl font-bold">Mirai Collective</span>
                     </Link>
                     <nav className="flex flex-col gap-4">

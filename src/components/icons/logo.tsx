@@ -1,22 +1,14 @@
-export function Logo(props: React.SVGProps<SVGSVGElement>) {
+import Image from "next/image";
+
+export function Logo(props: React.ImgHTMLAttributes<HTMLImageElement>) {
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
+    <Image
+      src="/M.svg"
+      alt="Mirai Collective Logo"
+      width={24}
+      height={24}
+      className="h-6 w-6 object-contain p-0"
       {...props}
-    >
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="central"
-        textAnchor="middle"
-        fontSize="22"
-        fontWeight="bold"
-        fontFamily="sans-serif"
-      >
-        M
-      </text>
-    </svg>
+    />
   );
 }

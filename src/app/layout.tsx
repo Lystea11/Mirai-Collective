@@ -9,6 +9,17 @@ export const metadata: Metadata = {
   title: 'Mirai Collective - Bridging Global Impact to Japan',
   description:
     'Mirai Collective is a student-led nonprofit consultancy bridging international nonprofits with Japanese communities through cultural integration, fundraising, and community building.',
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/apple-touch-icon.png',
+    other: [
+      { rel: 'manifest', url: '/site.webmanifest' },
+    ],
+  },
 };
 
 export default function RootLayout({
