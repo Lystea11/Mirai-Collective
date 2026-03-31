@@ -19,7 +19,7 @@ const differentiators = [
     { icon: Lightbulb, title: 'Youth-Led Innovation', description: 'As students, we bring fresh, dynamic, and innovative solutions to complex challenges.' },
     { icon: Heart, title: 'Purpose-Driven', description: 'Our nonprofit status means we are 100% focused on creating impact, not profit.' },
     { icon: Leaf, title: 'Sustainable Growth', description: 'We focus on building long-term, sustainable models for fundraising and community engagement.' },
-    { icon: Eye, title: 'Tailored Strategies', description: 'We understand that one size doesn’t fit all. Our solutions are customized to each partner’s unique needs.' },
+    { icon: Eye, title: 'Tailored Strategies', description: 'We understand that one size doesn\u2019t fit all. Our solutions are customized to each partner\u2019s unique needs.' },
 ]
 
 export default function AboutPage() {
@@ -28,36 +28,36 @@ export default function AboutPage() {
             <AnimatedSection className="bg-primary/10 py-20 text-center">
                 <div className="container mx-auto px-4">
                     <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">About Mirai Collective</h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">We are a passionate team of students building bridges between the world's causes and Japan's communities.</p>
+                    <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">We are a passionate team of students building bridges between the world&apos;s causes and Japan&apos;s communities.</p>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="py-16 sm:py-24">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         <div className="order-2 md:order-1">
                             <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Our Story</h2>
                             <p className="mt-4 text-muted-foreground">
-                                Mirai Collective was born from a shared observation by its two student founders: a noticeable gap in Japan's engagement with international nonprofit organizations. While studying international relations and social entrepreneurship, we saw countless global initiatives struggling to gain a foothold in Japan due to cultural, linguistic, and structural barriers.
+                                Mirai Collective was born from a shared observation by its two student founders: a noticeable gap in Japan&apos;s engagement with international nonprofit organizations. While studying international relations and social entrepreneurship, we saw countless global initiatives struggling to gain a foothold in Japan due to cultural, linguistic, and structural barriers.
                             </p>
                             <p className="mt-4 text-muted-foreground">
                                 Driven by a desire to change this, we launched Mirai Collective as a nonprofit consultancy. Our mission is to serve as the dedicated bridge, providing the strategic guidance, cultural translation, and community-building expertise that international nonprofits need to not just enter, but truly connect with and thrive in Japan.
                             </p>
                         </div>
-                        <div className="order-1 md:order-2 h-80 w-full overflow-hidden rounded-lg shadow-xl">
-                             <Image 
+                        <div className="order-1 md:order-2 h-80 w-full overflow-hidden rounded-lg shadow-xl transition-shadow duration-500 hover:shadow-2xl">
+                             <Image
                                 src="/2.jpg"
                                 alt="Founders planning"
                                 data-ai-hint="students planning"
                                 width={600}
                                 height={400}
-                                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                              />
                         </div>
                     </div>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="bg-card/50 py-16 sm:py-24">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Meet the Team</h2>
@@ -66,10 +66,10 @@ export default function AboutPage() {
                     </p>
                     {/* CEO and COO - Leadership Row */}
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                        {teamMembers.slice(0, 2).map(member => (
-                             <Card key={member.name} className="text-center border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/40 hover:-translate-y-2 transition-all duration-300 ease-out cursor-pointer group">
+                        {teamMembers.slice(0, 2).map((member, i) => (
+                             <Card key={member.name} className="text-center border-2 border-primary/20 shadow-lg hover:shadow-2xl hover:border-primary/40 hover:-translate-y-2 transition-all duration-300 cursor-pointer group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                  <CardContent className="pt-8 pb-8">
-                                     <Avatar className="w-32 h-32 mx-auto mb-6 transition-transform duration-300 ease-out group-hover:scale-110">
+                                     <Avatar className="w-32 h-32 mx-auto mb-6 transition-transform duration-500 group-hover:scale-110" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                          <AvatarFallback className="text-2xl font-bold bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">{member.initials}</AvatarFallback>
                                      </Avatar>
                                      <h3 className="text-2xl font-bold font-headline mb-2 group-hover:text-primary transition-colors duration-300">{member.name}</h3>
@@ -78,13 +78,13 @@ export default function AboutPage() {
                              </Card>
                         ))}
                     </div>
-                    
+
                     {/* Other Team Members */}
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                        {teamMembers.slice(2).map(member => (
-                             <Card key={member.name} className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out cursor-pointer group">
+                        {teamMembers.slice(2).map((member, i) => (
+                             <Card key={member.name} className="text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                  <CardContent className="pt-6">
-                                     <Avatar className="w-20 h-20 mx-auto mb-4 transition-transform duration-300 ease-out group-hover:scale-105">
+                                     <Avatar className="w-20 h-20 mx-auto mb-4 transition-transform duration-500 group-hover:scale-105" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                          <AvatarFallback className="text-lg group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">{member.initials}</AvatarFallback>
                                      </Avatar>
                                      <h3 className="text-lg font-bold font-headline group-hover:text-primary transition-colors duration-300">{member.name}</h3>
@@ -95,7 +95,7 @@ export default function AboutPage() {
                     </div>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="py-16 sm:py-24">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">What Makes Us Different</h2>
@@ -103,10 +103,10 @@ export default function AboutPage() {
                         Our unique position as a student-led nonprofit gives us an edge in driving impactful change.
                     </p>
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                        {differentiators.map(item => (
-                            <Card key={item.title}>
+                        {differentiators.map((item, i) => (
+                            <Card key={item.title} className="transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                 <CardHeader className="flex flex-row items-center gap-4">
-                                    <div className="bg-primary/20 p-3 rounded-full">
+                                    <div className="bg-primary/20 p-3 rounded-full transition-all duration-300 group-hover:bg-primary/30 group-hover:scale-110">
                                         <item.icon className="w-6 h-6 text-primary" />
                                     </div>
                                     <CardTitle className="font-headline text-xl">{item.title}</CardTitle>

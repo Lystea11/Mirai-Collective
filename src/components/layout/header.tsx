@@ -26,21 +26,22 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
+        "sticky top-0 z-50 w-full transition-all duration-500",
         isScrolled
-          ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+          ? "border-b border-border/40 bg-background/95 backdrop-blur-md shadow-sm supports-[backdrop-filter]:bg-background/60"
           : "bg-transparent"
       )}
+      style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
     >
       <div className="container mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2 transition-opacity duration-200 hover:opacity-80">
           <Logo className="h-6 w-6" />
           <span className="font-headline text-2xl font-bold">Mirai Collective</span>
         </Link>
@@ -50,8 +51,12 @@ export function Header() {
               key={href}
               href={href}
               className={cn(
-                "text-lg font-bold transition-colors hover:text-primary",
-                pathname === href ? "text-primary" : "text-muted-foreground"
+                "relative text-lg font-bold transition-colors duration-200 hover:text-primary",
+                "after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:bg-primary after:transition-all after:duration-300",
+                "after:ease-out",
+                pathname === href
+                  ? "text-primary after:w-full"
+                  : "text-muted-foreground after:w-0 hover:after:w-full"
               )}
             >
               {label}
@@ -59,7 +64,7 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-4">
-            <Button asChild className="hidden md:flex">
+            <Button asChild className="hidden md:flex transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]">
                 <Link href="/contact">Get in Touch</Link>
             </Button>
             <Sheet>

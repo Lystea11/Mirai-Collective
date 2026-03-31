@@ -14,15 +14,18 @@ const changingTexts = [
 
 export function HeroSection() {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [isFading, setIsFading] = React.useState(false);
+  const [phase, setPhase] = React.useState<"visible" | "exiting" | "entering">("visible");
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setIsFading(true);
+      setPhase("exiting");
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % changingTexts.length);
-        setIsFading(false);
-      }, 500); // match CSS transition duration
+        setPhase("entering");
+        setTimeout(() => {
+          setPhase("visible");
+        }, 50);
+      }, 400);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -30,37 +33,34 @@ export function HeroSection() {
 
   return (
     <section className="relative h-[80vh] min-h-[600px] w-full bg-primary/10 flex items-center justify-center text-center overflow-hidden">
-        {/* Parallax-like background effect */}
-        <div 
-            className="absolute inset-0 bg-cover bg-fixed bg-center" 
-            style={{backgroundImage: `url('https://placehold.co/1920x1080.png')`, opacity: 0.05}}
-            data-ai-hint="abstract background"
-        ></div>
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
         <div className="container relative z-10 px-4">
-        <h1 className="font-headline text-4xl font-extrabold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+        <h1 className="animate-in-up font-headline text-4xl font-extrabold tracking-tighter text-foreground sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
           Bridge{" "}
           <span
             className={cn(
-              "text-primary transition-opacity duration-500",
-              isFading ? "opacity-0" : "opacity-100"
+              "inline-block text-primary transition-all duration-400",
+              phase === "exiting" && "opacity-0 -translate-y-2",
+              phase === "entering" && "opacity-0 translate-y-2",
+              phase === "visible" && "opacity-100 translate-y-0"
             )}
+            style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
           >
             {changingTexts[currentIndex]}
           </span>
           <br />
           to Japan
         </h1>
-        <p className="mx-auto mt-8 max-w-3xl text-xl text-muted-foreground md:text-2xl lg:text-3xl">
+        <p className="animate-in-up-delay-1 mx-auto mt-8 max-w-3xl text-xl text-muted-foreground md:text-2xl lg:text-3xl">
           We empower international nonprofits to build meaningful connections and create lasting change within Japanese communities.
         </p>
-        <div className="mt-10 flex flex-wrap justify-center gap-6">
-          <Button asChild size="lg" className="text-lg px-8 py-4 h-auto">
+        <div className="animate-in-up-delay-2 mt-10 flex flex-wrap justify-center gap-6">
+          <Button asChild size="lg" className="text-lg px-8 py-4 h-auto transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
             <Link href="/contact">
-              Partner With Us <ArrowRight className="ml-2 h-6 w-6" />
+              Partner With Us <ArrowRight className="ml-2 h-6 w-6 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="text-lg px-8 py-4 h-auto">
+          <Button asChild size="lg" variant="outline" className="text-lg px-8 py-4 h-auto transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
             <Link href="/about">Learn More</Link>
           </Button>
         </div>

@@ -1,12 +1,26 @@
 "use server";
 
 import * as z from "zod";
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+let supabase: SupabaseClient;
 
-const supabase = createClient(supabaseUrl, supabaseKey);
+function getSupabase() {
+  if (!supabase) {
+    supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
+      {
+        auth: {
+          persistSession: false,
+          autoRefreshToken: false,
+          detectSessionInUrl: false,
+        },
+      }
+    );
+  }
+  return supabase;
+}
 
 const formSchema = z.object({
   name: z.string(),
@@ -19,8 +33,7 @@ export async function submitInquiry(values: z.infer<typeof formSchema>) {
   try {
     const validatedData = formSchema.parse(values);
 
-    // Save to Supabase database
-    const { data, error } = await supabase
+    const { data, error } = await getSupabase()
       .from('contact_inquiries')
       .insert([
         {

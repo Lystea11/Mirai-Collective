@@ -41,7 +41,7 @@ export default function HowItWorksPage() {
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">A proven, transparent process for turning global vision into local impact.</p>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="py-16 sm:py-24">
                 <div className="container mx-auto px-4">
                     <div className="relative">
@@ -49,11 +49,11 @@ export default function HowItWorksPage() {
                         <div className="absolute left-1/2 top-12 bottom-12 w-0.5 bg-border hidden md:block"></div>
 
                         {methodology.map((step, index) => (
-                            <div key={step.phase} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group mb-12">
-                                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-background border-2 border-primary text-primary font-bold z-10">
+                            <AnimatedSection key={step.phase} delay={index * 150} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group mb-12">
+                                <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-background border-2 border-primary text-primary font-bold z-10 transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                     {step.phase}
                                 </div>
-                                <Card className="w-full md:w-[calc(50%-3rem)]">
+                                <Card className="w-full md:w-[calc(50%-3rem)] transition-all duration-300 hover:shadow-lg hover:-translate-y-1" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                     <CardHeader>
                                         <div className="flex items-center justify-between">
                                             <CardTitle className="font-headline text-2xl">{step.title}</CardTitle>
@@ -64,25 +64,27 @@ export default function HowItWorksPage() {
                                         <p className="text-muted-foreground">{step.description}</p>
                                     </CardContent>
                                 </Card>
-                            </div>
+                            </AnimatedSection>
                         ))}
                     </div>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="bg-card/50 py-16 sm:py-24">
                 <div className="container mx-auto px-4 text-center">
                     <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Proven Success</h2>
                     <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">Our process delivers tangible results. We measure our success by the impact our partners create.</p>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {successMetrics.map(metric => (
-                            <Card key={metric.label} className="text-center">
-                                <CardContent className="pt-6">
-                                    <p className="font-headline text-5xl font-bold text-primary">{metric.value}</p>
-                                    <h3 className="mt-2 text-xl font-semibold">{metric.label}</h3>
-                                    <p className="mt-1 text-muted-foreground">{metric.description}</p>
-                                </CardContent>
-                            </Card>
+                        {successMetrics.map((metric, i) => (
+                            <AnimatedSection key={metric.label} delay={i * 100}>
+                                <Card className="text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
+                                    <CardContent className="pt-6">
+                                        <p className="font-headline text-5xl font-bold text-primary transition-transform duration-500 group-hover:scale-110" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>{metric.value}</p>
+                                        <h3 className="mt-2 text-xl font-semibold">{metric.label}</h3>
+                                        <p className="mt-1 text-muted-foreground">{metric.description}</p>
+                                    </CardContent>
+                                </Card>
+                            </AnimatedSection>
                         ))}
                     </div>
                 </div>

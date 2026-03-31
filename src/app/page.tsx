@@ -86,25 +86,25 @@ export default function Home() {
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
               Mirai Collective is dedicated to breaking down cultural and logistical barriers for international nonprofits, enabling them to thrive in Japan. We believe in the power of shared purpose to create a lasting global impact.
             </p>
-            <Button asChild size="lg" className="mt-6">
+            <Button asChild size="lg" className="mt-6 group transition-all duration-300 hover:shadow-md">
               <Link href="/mission">
-                Our Mission <ArrowRight className="ml-2 h-5 w-5" />
+                Our Mission <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>
-          <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl">
+          <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl transition-shadow duration-500 hover:shadow-2xl">
              <Image
               src="/1.jpg"
               alt="Team working together"
               data-ai-hint="collaboration meeting"
               width={600}
               height={400}
-              className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
             />
           </div>
         </div>
       </AnimatedSection>
-      
+
       <div className="bg-card/50">
       <AnimatedSection className="container mx-auto px-4 py-16 sm:py-24 text-center">
         <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">How We Work</h2>
@@ -112,33 +112,23 @@ export default function Home() {
           Our structured, three-phase approach ensures a seamless and effective journey for our partners, from initial research to sustained growth.
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline text-2xl">1. Research & Compatibility</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">We conduct deep-dive research to ensure perfect alignment between your mission and the Japanese cultural landscape.</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline text-2xl">2. Partnership & Planning</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">Together, we build a strategic roadmap for market entry, fundraising, and community engagement.</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline text-2xl">3. Growth & Impact</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">We provide ongoing support to help you grow your presence and maximize your social impact in Japan.</p>
-            </CardContent>
-          </Card>
+          {[
+            { title: "1. Research & Compatibility", desc: "We conduct deep-dive research to ensure perfect alignment between your mission and the Japanese cultural landscape." },
+            { title: "2. Partnership & Planning", desc: "Together, we build a strategic roadmap for market entry, fundraising, and community engagement." },
+            { title: "3. Growth & Impact", desc: "We provide ongoing support to help you grow your presence and maximize your social impact in Japan." },
+          ].map((item, i) => (
+            <Card key={item.title} className="transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1" style={{ transitionDelay: `${i * 75}ms` }}>
+              <CardHeader>
+                <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{item.desc}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
-         <Button asChild variant="link" className="mt-8 text-lg text-primary">
-            <Link href="/how-it-works">Learn more about our process <ArrowRight className="ml-2 h-5 w-5" /></Link>
+         <Button asChild variant="link" className="mt-8 text-lg text-primary group">
+            <Link href="/how-it-works">Learn more about our process <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" /></Link>
          </Button>
       </AnimatedSection>
       </div>
@@ -169,7 +159,7 @@ export default function Home() {
                     className="pl-1 basis-1/2 md:basis-1/3 lg:basis-1/5"
                   >
                     <div className="p-1">
-                      <div className="flex aspect-video items-center justify-center p-6 grayscale hover:grayscale-0 transition-all duration-300">
+                      <div className="flex aspect-video items-center justify-center p-6 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 ease-out">
                         <Image
                           src={partner.logo}
                           alt={partner.alt}
@@ -186,7 +176,7 @@ export default function Home() {
             </Carousel>
           </div>
           <div className="text-center mt-8">
-              <Button asChild size="lg" variant="outline">
+              <Button asChild size="lg" variant="outline" className="transition-all duration-300 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]">
                 <Link href="/partners">
                   Become a Partner
                 </Link>

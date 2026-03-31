@@ -81,39 +81,39 @@ export default function PartnersPage() {
     const [currentRow, setCurrentRow] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
     const [userInteracted, setUserInteracted] = useState(false);
-    
+
     // Group partners into rows of 3
     const partnersPerRow = 3;
     const partnerRows = [];
     for (let i = 0; i < partners.length; i += partnersPerRow) {
         partnerRows.push(partners.slice(i, i + partnersPerRow));
     }
-    
+
     const totalRows = partnerRows.length;
-    
+
     // Handle user interaction pause
     const handleUserInteraction = (rowIndex: number) => {
         setCurrentRow(rowIndex);
         setUserInteracted(true);
         setIsAutoPlaying(false);
-        
+
         // Resume auto-play after 8 seconds of no interaction
         setTimeout(() => {
             setUserInteracted(false);
             setIsAutoPlaying(true);
         }, 8000);
     };
-    
+
     useEffect(() => {
         if (!isAutoPlaying || userInteracted) return;
-        
+
         const interval = setInterval(() => {
             setCurrentRow((prev) => (prev + 1) % totalRows);
         }, 4000);
-        
+
         return () => clearInterval(interval);
     }, [isAutoPlaying, userInteracted, totalRows]);
-    
+
     return (
         <div>
             <AnimatedSection className="bg-primary/10 py-20 text-center">
@@ -126,34 +126,36 @@ export default function PartnersPage() {
             <AnimatedSection className="py-16 sm:py-24">
                 <div className="container mx-auto px-4">
                     <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground text-center">Current Partnerships</h2>
-                    
+
                     {/* Carousel Container */}
-                    <div 
+                    <div
                         className="mt-12 relative overflow-hidden"
-                        style={{ height: '400px' }} // Fixed height to show one complete row
+                        style={{ height: '400px' }}
                         onMouseEnter={() => !userInteracted && setIsAutoPlaying(false)}
                         onMouseLeave={() => !userInteracted && setIsAutoPlaying(true)}
                     >
-                        <div 
-                            className="flex flex-col transition-transform duration-1000 ease-out"
-                            style={{ 
+                        <div
+                            className="flex flex-col transition-transform ease-out"
+                            style={{
                                 transform: `translateY(-${currentRow * 400}px)`,
-                                height: `${totalRows * 400}px`
+                                height: `${totalRows * 400}px`,
+                                transitionDuration: '800ms',
+                                transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
                             }}
                         >
                             {partnerRows.map((row, rowIndex) => (
                                 <div key={rowIndex} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4" style={{ height: '400px' }}>
                                     {row.map((partner) => (
-                                        <Card key={partner.name} className="flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out group">
+                                        <Card key={partner.name} className="flex flex-col hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                             <CardHeader className="items-center text-center">
-                                                <div className="w-full h-20 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
-                                                    <Image 
-                                                        src={partner.logo} 
-                                                        alt={`${partner.name} Logo`} 
-                                                        data-ai-hint="logo" 
-                                                        width={120} 
-                                                        height={60} 
-                                                        className="max-h-16 w-auto object-contain" 
+                                                <div className="w-full h-20 flex items-center justify-center mb-4 transition-transform duration-500 group-hover:scale-105" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
+                                                    <Image
+                                                        src={partner.logo}
+                                                        alt={`${partner.name} Logo`}
+                                                        data-ai-hint="logo"
+                                                        width={120}
+                                                        height={60}
+                                                        className="max-h-16 w-auto object-contain"
                                                     />
                                                 </div>
                                                 <CardTitle className="font-headline text-lg group-hover:text-primary transition-colors duration-300">{partner.name}</CardTitle>
@@ -163,7 +165,7 @@ export default function PartnersPage() {
                                                 <p className="text-muted-foreground text-sm leading-relaxed">{partner.description}</p>
                                             </CardContent>
                                             <CardFooter>
-                                                <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-300">
+                                                <Button asChild variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                                                     <Link href={partner.website} target="_blank" rel="noopener noreferrer">
                                                         <LinkIcon className="mr-2 h-4 w-4" /> Visit Website
                                                     </Link>
@@ -175,25 +177,26 @@ export default function PartnersPage() {
                             ))}
                         </div>
                     </div>
-                    
+
                     {/* Row Indicators */}
                     <div className="flex justify-center mt-6 space-x-2">
                         {Array.from({ length: totalRows }).map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleUserInteraction(index)}
-                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                    index === currentRow 
-                                        ? 'bg-primary w-8' 
-                                        : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
+                                className={`h-2 rounded-full transition-all duration-500 ${
+                                    index === currentRow
+                                        ? 'bg-primary w-8'
+                                        : 'bg-muted-foreground/30 w-2 hover:bg-muted-foreground/50'
                                 }`}
+                                style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
                                 aria-label={`Go to partner row ${index + 1}`}
                             />
                         ))}
                     </div>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="bg-card/50 py-16 sm:py-24">
                 <div className="container mx-auto px-4">
                     <div className="text-center">
@@ -203,27 +206,19 @@ export default function PartnersPage() {
                         </p>
                     </div>
                     <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                        <div className="flex flex-col items-center">
-                             <div className="bg-primary/20 p-4 rounded-full w-fit mb-4">
-                                <Target className="w-8 h-8 text-primary" />
-                            </div>
-                            <h3 className="font-headline text-xl font-bold">1. Alignment & Vetting</h3>
-                            <p className="text-muted-foreground mt-2">We start by deeply understanding your mission, vision, and goals to ensure a strong strategic and cultural fit.</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                             <div className="bg-primary/20 p-4 rounded-full w-fit mb-4">
-                                <Leaf className="w-8 h-8 text-primary" />
-                            </div>
-                            <h3 className="font-headline text-xl font-bold">2. Strategy & Growth Plan</h3>
-                            <p className="text-muted-foreground mt-2">We co-create a customized plan for Japan, covering everything from fundraising to community outreach and branding.</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                             <div className="bg-primary/20 p-4 rounded-full w-fit mb-4">
-                                <CheckCircle className="w-8 h-8 text-primary" />
-                            </div>
-                            <h3 className="font-headline text-xl font-bold">3. Launch & Ongoing Support</h3>
-                            <p className="text-muted-foreground mt-2">We help you launch your initiatives and provide continuous support to ensure long-term impact and sustainability.</p>
-                        </div>
+                        {[
+                            { icon: Target, title: "1. Alignment & Vetting", desc: "We start by deeply understanding your mission, vision, and goals to ensure a strong strategic and cultural fit." },
+                            { icon: Leaf, title: "2. Strategy & Growth Plan", desc: "We co-create a customized plan for Japan, covering everything from fundraising to community outreach and branding." },
+                            { icon: CheckCircle, title: "3. Launch & Ongoing Support", desc: "We help you launch your initiatives and provide continuous support to ensure long-term impact and sustainability." },
+                        ].map((item, i) => (
+                            <AnimatedSection key={item.title} delay={i * 100} className="flex flex-col items-center group">
+                                <div className="bg-primary/20 p-4 rounded-full w-fit mb-4 transition-all duration-300 group-hover:bg-primary/30 group-hover:scale-110" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
+                                    <item.icon className="w-8 h-8 text-primary" />
+                                </div>
+                                <h3 className="font-headline text-xl font-bold">{item.title}</h3>
+                                <p className="text-muted-foreground mt-2">{item.desc}</p>
+                            </AnimatedSection>
+                        ))}
                     </div>
                 </div>
             </AnimatedSection>
@@ -232,9 +227,9 @@ export default function PartnersPage() {
                 <div className="container mx-auto px-4">
                     <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground">Partner With Us</h2>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                        Ready to bring your mission to Japan? We're looking for passionate, impactful organizations to join our collective.
+                        Ready to bring your mission to Japan? We&apos;re looking for passionate, impactful organizations to join our collective.
                     </p>
-                    <Button asChild size="lg" className="mt-8">
+                    <Button asChild size="lg" className="mt-8 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]">
                         <Link href="/contact">Become a Partner</Link>
                     </Button>
                 </div>

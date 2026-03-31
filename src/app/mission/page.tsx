@@ -36,7 +36,7 @@ export default function MissionPage() {
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">To connect international nonprofits with Japanese communities, fostering a culture of global collaboration and shared purpose.</p>
                 </div>
             </AnimatedSection>
-            
+
             <AnimatedSection className="py-16 sm:py-24">
                 <div className="container mx-auto px-4">
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -49,14 +49,14 @@ export default function MissionPage() {
                                Mirai Collective exists to eliminate that barrier. We serve as the vital link, providing the strategic, cultural, and operational support necessary for these organizations to not only establish a presence, but to build deep, lasting relationships with Japanese communities. By doing so, we aim to unlock new avenues for fundraising, volunteerism, and social innovation, creating a future where global compassion knows no borders.
                             </p>
                         </div>
-                        <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl">
-                            <Image 
+                        <div className="h-80 w-full overflow-hidden rounded-lg shadow-xl transition-shadow duration-500 hover:shadow-2xl">
+                            <Image
                                 src="/3.png"
                                 alt="Bridge connecting two lands"
                                 data-ai-hint="bridge connection"
                                 width={600}
                                 height={400}
-                                className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                                className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-105"
                             />
                         </div>
                     </div>
@@ -70,10 +70,10 @@ export default function MissionPage() {
                         These principles guide every decision we make and every partnership we forge.
                     </p>
                     <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {values.map((value) => (
-                             <Card key={value.title} className="text-center">
+                        {values.map((value, i) => (
+                             <Card key={value.title} className="text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group" style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}>
                                 <CardHeader>
-                                    <div className="mx-auto bg-primary/20 p-4 rounded-full w-fit">
+                                    <div className="mx-auto bg-primary/20 p-4 rounded-full w-fit transition-all duration-300 group-hover:bg-primary/30 group-hover:scale-110">
                                         <value.icon className="w-8 h-8 text-primary" />
                                     </div>
                                     <CardTitle className="font-headline pt-4">{value.title}</CardTitle>
